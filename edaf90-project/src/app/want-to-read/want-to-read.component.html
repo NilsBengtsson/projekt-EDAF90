@@ -1,0 +1,10 @@
+<div>
+    <h1>Böcker att läsa</h1>
+    <div *ngFor="let book of books">
+        <p>
+            <input type="checkbox"/>
+            {{book.name}}
+            <button class="del">X</button>
+        </p>
+    </div>
+</div>

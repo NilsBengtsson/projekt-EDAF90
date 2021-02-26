@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { ReadBooksComponent } from './read-books/read-books.component';
 import { WantToReadComponent } from './want-to-read/want-to-read.component';
 import { SearchComponent } from './search/search.component';
+import { BookItemComponent } from './book-item/book-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReadBooksComponent,
     WantToReadComponent,
-    SearchComponent
+    SearchComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
