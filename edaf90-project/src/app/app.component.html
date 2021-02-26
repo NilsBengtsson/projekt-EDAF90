@@ -40,12 +40,12 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 100px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #558aa8;
     color: white;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .toolbar img {
@@ -53,7 +53,7 @@
   }
 
   .toolbar #twitter-logo {
-    height: 40px;
+    height: 68px;
     margin: 0 16px;
   }
 
@@ -64,7 +64,7 @@
   .content {
     display: flex;
     margin: 82px auto 32px;
-    padding: 0 16px;
+    padding: 0;
     max-width: 960px;
     flex-direction: column;
     align-items: center;
@@ -301,10 +301,13 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <span>Välkommen till din läsdagbok
-    På den här sidan kan du skriva recensioner, hålla koll på vilka böcker du har läst och vill läsa 
+  <p style="padding-left: 10px;">Välkommen till din läsdagbok
+    På den här sidan kan du skriva recensioner, 
+    hålla koll på vilka böcker du har läst och vill läsa 
     samt söka upp nya böcker. Börja genom att trycka på någon av knapparna nedan!
-  </span>
+  </p>
+
+  
     <div class="spacer"></div>
     <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=M5V_IXMewl4" title="Twitter">
       <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -314,12 +317,9 @@
     </a>
 </div>
 
-<div class="content" role="main">
-  </div>
-
   <div>
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-  <div class="container">
+  <div style="padding-top: 40px;" class="container">
           <a class="nav-link" routerLinkActive="active" routerLink="/read-books">Lästa Böcker</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/want-to-read">Vill läsa</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/search">Sök efter böcker</a>
