@@ -160,12 +160,12 @@
   a,
   a:visited,
   a:hover {
-    color: #1976d2;
+    color: #0b0b0c;
     text-decoration: none;
   }
 
   a:hover {
-    color: #125699;
+    color: #fafafa;
   }
 
   .terminal {
@@ -301,12 +301,10 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Välkommen till din läsdagbok</span>
+  <span>Välkommen till din läsdagbok
+    På den här sidan kan du skriva recensioner, hålla koll på vilka böcker du har läst och vill läsa 
+    samt söka upp nya böcker. Börja genom att trycka på någon av knapparna nedan!
+  </span>
     <div class="spacer"></div>
     <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=M5V_IXMewl4" title="Twitter">
       <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -318,24 +316,17 @@
 
 <div class="content" role="main">
   </div>
- 
-  <p>Välkommen till din dagbok! <br/>
-    På den här sidan kan du skriva recensioner, hålla koll på vilka böcker du har läst och vill läsa 
-    samt söka upp nya böcker. Börja genom att trycka på någon av knapparna nedan!
-  </p>
 
   <div>
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
   <div class="container">
-      <a class="navbar-brand">Angular Router</a>
-      <ul class="nav navbar-nav" routerLinkActive="active">
-          <li class="nav-item"><a class="nav-link" routerLink="/read-books">Lästa Böcker</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/want-to-read">Vill läsa</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/search">Sök efter böcker</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/book-item">Böcker</a></li>
-      </ul>
+          <a class="nav-link" routerLinkActive="active" routerLink="/read-books">Lästa Böcker</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/want-to-read">Vill läsa</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/search">Sök efter böcker</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/book-item">Böcker</a>
   </div>
 </nav>
+
 
 <router-outlet></router-outlet>
 

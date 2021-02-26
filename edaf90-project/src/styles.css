@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+a:link {
+        background-color: #ddd1d1;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+    
