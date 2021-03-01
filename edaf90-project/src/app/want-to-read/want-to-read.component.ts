@@ -23,4 +23,9 @@ export class WantToReadComponent implements OnInit {
       }
     ];
   }
+
+  deleteBook(name:string): void {
+    if(confirm("Are you sure you want to delete " + name))
+      this.books = this.books.filter(book => name != book.name);
+  }
 }
