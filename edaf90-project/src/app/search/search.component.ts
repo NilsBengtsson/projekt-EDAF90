@@ -11,6 +11,7 @@ import { BookDataService } from '../bookDataService';
 export class SearchComponent implements OnInit {
   books: BookItem[] = [];
   bookOptions:BookOption[] = [];
+  fetchingData = false;
 
   constructor(private data:BookDataService) { }
 
@@ -18,6 +19,7 @@ export class SearchComponent implements OnInit {
     this.books = [];
     console.log(searchInput);
     if(searchInput!=""){
+      this.fetchingData = true;
       fetch("http://openlibrary.org/search.json?q="+searchInput+"&mode=everything")
       .then(result => result.json())
       .then(response =>{
@@ -35,7 +37,7 @@ export class SearchComponent implements OnInit {
           var option:BookOption = {name: item.name, value: item, checked: false}
           return option;
         });
-
+        this.fetchingData = false;
         console.log("fetched!");
       });
     }
