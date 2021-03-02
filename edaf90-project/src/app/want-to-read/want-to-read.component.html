@@ -1,10 +1,17 @@
 <div>
     <h1>Böcker att läsa</h1>
-    <div *ngFor="let book of books">
+    <div *ngFor="let option of bookOptions">
         <p>
-            <input type="checkbox"/>
-            {{book.name}}
-            <button class="del" (click)="deleteBook(book.name)">X</button>
+            <input type="checkbox"
+            name = "option.name"
+            value = "{{option.value}}"
+            [checked] = "option.checked"
+            (change) = "option.checked = !option.checked"
+            />
+            {{option.value.name}}
+            <button class="del" (click)="deleteBook(option.value.name)">X</button>
         </p>
     </div>
+
+    <button (click)="setReadBooks()">Send checked books</button>
 </div>
