@@ -4,16 +4,20 @@
   <input #searchInput class="search-bar" type="search" placeholder="Sök...">
   <button (click)="searchBooks(searchInput.value)" type="button" class="btn btn-info">SÖK</button>
   <button type="button" class="btn btn-danger" style="float: right;">Rensa markerade</button>
-  <button type="button" class="btn btn-success" style="float: right;">Lägg till markerade i listan "Vill läsa"</button>
+  <button (click)="setBooksToRead()" type="button" class="btn btn-success" style="float: right;">Lägg till markerade i listan "Vill läsa"</button>
   <!--<button class="del">RENSA</button>-->
 </div>
 
 
-<div #searchOutput *ngFor="let book of books">
+<div #searchOutput *ngFor="let option of bookOptions">
     <p>
       &nbsp;
-      <input type="checkbox"/> &nbsp;
-      <b>{{book.name}}</b> &nbsp;
-      <i>{{book.author}}</i> &nbsp;
+      <input type="checkbox"
+        name = "option.name"
+        value = "{{option.value}}"
+        [checked] = "option.checked"
+        (change) = "option.checked = !option.checked"/> &nbsp;
+      <b>{{option.value.name}}</b> &nbsp;
+      <i>{{option.value.author}}</i> &nbsp;
     </p>
 </div>

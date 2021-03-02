@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {BookItemComponent as BookItem, BookOption} from '../book-item/book-item.component'
 import { BookDataService } from '../bookDataService';
 import { Subscription } from 'rxjs';
@@ -14,12 +14,13 @@ export class WantToReadComponent implements OnInit {
   subscription:Subscription;
 
   constructor(private data:BookDataService) {
-      this.subscription = data.booksToRead.subscribe(books => {
+      this.subscription = data.booksToRead$.subscribe(books => {
+        console.log("Sub triggered");
         this.bookOptions = books.map(item => {
           var option:BookOption = {name: item.name, value: item, checked: false}
           return option;
-        })
-      })
+        });
+      });
    }
 
   ngOnInit(): void {
@@ -35,5 +36,9 @@ export class WantToReadComponent implements OnInit {
     var readBooks:BookItem[] = this.bookOptions.filter(op => op.checked).map(op => op.value);
 
     this.data.setReadBooks(readBooks);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

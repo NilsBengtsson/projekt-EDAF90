@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { BookItemComponent as BookItem } from './book-item/book-item.component'
 
 export const TEST_BOOKS:BookItem[] = [
@@ -10,13 +10,14 @@ export const TEST_BOOKS:BookItem[] = [
 @Injectable()
 export class BookDataService {
 
-    private booksToReadSource = new Subject<BookItem[]>();
-    private readBooksSource = new Subject<BookItem[]>(); 
+    private booksToReadSource = new BehaviorSubject<BookItem[]>([]);
+    private readBooksSource = new BehaviorSubject<BookItem[]>([]); 
 
-    booksToRead = this.booksToReadSource.asObservable();
-    readBooks = this.readBooksSource.asObservable();
+    booksToRead$ = this.booksToReadSource.asObservable();
+    readBooks$ = this.readBooksSource.asObservable();
 
     setBooksToRead(books: BookItem[]) {
+        console.log("setting books to read in observable to: " + books.map(book => book.name))
         this.booksToReadSource.next(books);
     }
 
