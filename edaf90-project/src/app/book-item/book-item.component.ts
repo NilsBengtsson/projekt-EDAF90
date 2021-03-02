@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class BookItemComponent {
   name:string = "";
   desc:string = "";
+  author:string = "";
 }

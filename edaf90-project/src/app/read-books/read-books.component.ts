@@ -16,7 +16,8 @@ export class ReadBooksComponent implements OnInit {
     this.books = [
       {
         name: "",
-        desc: ""
+        desc: "",
+        author: ""
       } 
     ];
   }

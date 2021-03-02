@@ -15,11 +15,13 @@ export class WantToReadComponent implements OnInit {
     this.books = [
       {
         name: "Bobsson",
-        desc: "Hallå Bob"
+        desc: "Hallå Bob",
+        author: ""
       }, 
       {
         name: "Chale",
-        desc: "Chale Destroys"
+        desc: "Chale Destroys",
+        author: ""
       }
     ];
   }
