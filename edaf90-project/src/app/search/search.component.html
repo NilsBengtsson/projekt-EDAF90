@@ -1,8 +1,16 @@
-<html>
+<h1>Sök efter en bok</h1>
+<input #searchInput type="search" placeholder="Vilken bok letar du efter?">
+<button (click)="searchBooks(searchInput.value)">SÖK</button> &nbsp; &nbsp;&nbsp;
+<button>Lägg till markerade i listan "Vill läsa"</button>
+<button>Rensa markerade</button>
+<!--<button class="del">RENSA</button>-->
 
 
-
-<input id="input">
-  <button onclick="getbooks()">Get books</button><br>
-  <div id="output"></div>
-  </html>
+<div #searchOutput *ngFor="let book of books">
+    <p>
+      &nbsp;
+      <input type="checkbox"/> &nbsp;
+      <b>{{book.name}}</b> &nbsp;
+      <i>{{book.author}}</i> &nbsp;
+    </p>
+</div>
