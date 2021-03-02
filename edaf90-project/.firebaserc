@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "edaf90-project-2021": {
+      "hosting": {
+        "edaf90-project": [
+          "edaf90-project-2021"
+        ]
+      }
+    }
+  }
+}
