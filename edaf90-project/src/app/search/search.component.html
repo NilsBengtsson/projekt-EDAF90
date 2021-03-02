@@ -1,9 +1,12 @@
 <h1>Sök efter en bok</h1>
-<input #searchInput type="search" placeholder="Vilken bok letar du efter?">
-<button (click)="searchBooks(searchInput.value)">SÖK</button> &nbsp; &nbsp;&nbsp;
-<button>Lägg till markerade i listan "Vill läsa"</button>
-<button>Rensa markerade</button>
-<!--<button class="del">RENSA</button>-->
+
+<div class="search-box">
+  <input #searchInput class="search-bar" type="search" placeholder="Sök...">
+  <button (click)="searchBooks(searchInput.value)" type="button" class="btn btn-info">SÖK</button>
+  <button type="button" class="btn btn-danger" style="float: right;">Rensa markerade</button>
+  <button type="button" class="btn btn-success" style="float: right;">Lägg till markerade i listan "Vill läsa"</button>
+  <!--<button class="del">RENSA</button>-->
+</div>
 
 
 <div #searchOutput *ngFor="let book of books">

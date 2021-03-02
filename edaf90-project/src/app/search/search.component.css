@@ -1,0 +1,16 @@
+.search-box{
+    margin: 0% 10% 0% 5%;
+}
+
+.search-bar{
+    height: 38px;
+    width: 250px;
+    border: 2px solid #17A2BB;
+    vertical-align: middle;
+}
+
+.btn{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important; 
+    margin-top: 0px !important;
+}
