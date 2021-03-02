@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {BookItemComponent as BookItem} from '../book-item/book-item.component'
+import {BookItemComponent as BookItem, BookOption} from '../book-item/book-item.component'
 import { BookDataService } from '../bookDataService';
 import { Subscription } from 'rxjs';
-
-interface BookOption {
-  name:string,
-  value:BookItem,
-  checked:boolean
-}
 
 @Component({
   selector: 'app-want-to-read',

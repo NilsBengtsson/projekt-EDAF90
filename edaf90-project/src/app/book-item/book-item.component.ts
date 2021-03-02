@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+export interface BookOption {
+  name:string,
+  value:BookItemComponent,
+  checked:boolean
+}
+
 @Component({
   selector: 'app-book-item',
   templateUrl: './book-item.component.html',
