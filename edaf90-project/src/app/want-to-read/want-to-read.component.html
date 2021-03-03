@@ -4,11 +4,12 @@
         <p>
             <input type="checkbox"
             name = "option.name"
-            value = "{{option.value}}"
+            value = "{{option.value}}" 
             [checked] = "option.checked"
             (change) = "option.checked = !option.checked"
             />
-            {{option.value.name}}
+            <b>{{option.value.name}}</b> &nbsp;
+            <i>{{option.value.author}}</i> &nbsp;
             <button class="del" (click)="deleteBook(option.value.name)">X</button>
         </p>
     </div>

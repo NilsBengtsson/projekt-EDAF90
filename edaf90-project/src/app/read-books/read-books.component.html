@@ -1,5 +1,21 @@
 <div>
     <h1>Böcker som jag har läst</h1>
-    <div *ngFor="let book of books">
+    <div *ngFor="let option of bookOptions">
+        <p>
+            <b>{{option.value.name}}</b> &nbsp;
+            <i>{{option.value.author}}</i> &nbsp;
+        </p>
+
+        <div class="review-box">
+            <input #reviewInput class="review-box" type="review" placeholder="Skriv en recension">
+            <button (click)="review(reviewInput.value)" type="button" class="btn btn-info">Skicka recension</button>
+        </div>
+
+        <div class="show-review">
+            <button (click)="showreviews()" type="button" class="btn btn-info">Visa recensioner</button>
+            <h2>reviews</h2>
+        </div>
     </div>
-</div>
+
+    
+    

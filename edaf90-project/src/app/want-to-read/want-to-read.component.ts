@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class WantToReadComponent implements OnInit {
   bookOptions:BookOption[] = [];
+  
 
   subscription:Subscription;
 
