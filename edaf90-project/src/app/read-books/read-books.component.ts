@@ -13,8 +13,6 @@ export class ReadBooksComponent implements OnInit {
   subscription:Subscription;
   reviews: Array<any> = [] 
 
-  
-
   constructor(private data:BookDataService) {
       this.subscription = data.booksToRead$.subscribe(books => {
         console.log("Sub triggered");
@@ -36,14 +34,20 @@ export class ReadBooksComponent implements OnInit {
         currentReviews.push(newReview);
         this.reviews = currentReviews;
         console.log('review updated')
+        
       }
 
       showreviews() {
-        for (var i = 0; i<this.reviews.length; i++) {
-        document.write('Recension ' + (i+1) + ': ' + this.reviews[i] + ' ' + "</br>");
+        return this.reviews;
+        }
       }
 
-    }
+      
 
-  }
+      
+    
+
+
+
+
 

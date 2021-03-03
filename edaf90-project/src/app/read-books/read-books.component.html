@@ -5,17 +5,38 @@
             <b>{{option.value.name}}</b> &nbsp;
             <i>{{option.value.author}}</i> &nbsp;
         </p>
+    </div>
 
         <div class="review-box">
             <input #reviewInput class="review-box" type="review" placeholder="Skriv en recension">
             <button (click)="review(reviewInput.value)" type="button" class="btn btn-info">Skicka recension</button>
         </div>
 
-        <div class="show-review">
-            <button (click)="showreviews()" type="button" class="btn btn-info">Visa recensioner</button>
-            <h2>reviews</h2>
-        </div>
-    </div>
+       <h2>Här är dina recensioner: </h2>
+       <p id="showr">... </p>
+
+       <button onclick="showcurrentreviews()">Visa dina recesioner</button><br>
+    </div>      
+
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+    function showcurrentreviews() {
+        let currentreviews = showreviews();
+        for (var i = 0; i<this.currentreviews.length; i++) {
+        document.getElementById("showr").innerHTML = ('Recension ' + (i+1) + ': ' + currentreviews[i] + ' ' + "</br>");
+        console.log('showreviews har körts')
+    }
+}
+</script>
+
+    
+
+
+
+    
 
     
     

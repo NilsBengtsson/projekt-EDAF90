@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,5 +12,19 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <body>
   <app-root></app-root>
+  <script>
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "Hello World";
+    }
+    </script>
+    <script>
+      function showcurrentreviews() {
+          let currentreviews = //hur kommer jag åt reviews i read-books?
+          for (var i = 0; i<this.currentreviews.length; i++) {
+          document.getElementById("showr").innerHTML = ('Recension ' + (i+1) + ': ' + currentreviews[i] + ' ' + "</br>");
+          console.log('showreviews har körts')
+      }
+  }
+  </script>
 </body>
 </html>
