@@ -2,6 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {BookItemComponent as BookItem, BookOption} from '../book-item/book-item.component'
 import { BookDataService } from '../bookDataService';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,7 @@ export class SearchComponent implements OnInit {
   bookOptions:BookOption[] = [];
   fetchingData = false;
 
-  constructor(private data:BookDataService) { }
+  constructor(private data:BookDataService, private firestore:AngularFirestore) {}
 
   searchBooks(searchInput: string){
     this.books = [];
@@ -25,7 +26,7 @@ export class SearchComponent implements OnInit {
       .then(response =>{
           for(var i=0; i<100; i++){
             if(response.docs[i] !== undefined && response.docs[i].author_name !== undefined) { //discards books with undefined properties
-              this.books.push({name: response.docs[i].title, author: response.docs[i].author_name[0], desc: ""})
+              this.books.push({name: response.docs[i].title, author: response.docs[i].author_name[0], desc: "", id: ""})
               console.log(response.docs[i].title);
                   "<h2>"+response.docs[i].title+"</h2>"
                   +response.docs[i].author_name[0];
@@ -45,10 +46,18 @@ export class SearchComponent implements OnInit {
 
   //used by "lägg till markerade" button
   setBooksToRead() {
-    this.data.setBooksToRead(this.bookOptions.filter(op => op.checked).map(op => op.value));
+    var booksToAdd = this.bookOptions.filter(op => op.checked).map(op => op.value);
+    var test = 0;
+    booksToAdd.forEach(b => {
+      const id = this.firestore.createId();
+      this.firestore.collection('toRead').doc(id).set(b);
+      this.firestore.collection('toRead').doc(id).update({'id':id});
+    });
+    this.data.setBooksToRead(booksToAdd);
   }
 
   ngOnInit(): void {
+
   }
 
 }

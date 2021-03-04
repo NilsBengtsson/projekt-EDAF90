@@ -15,4 +15,5 @@ export class BookItemComponent {
   name:string = "";
   desc:string = "";
   author:string = "";
+  id:string = "";
 }

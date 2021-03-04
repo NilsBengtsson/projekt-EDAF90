@@ -3,8 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { BookItemComponent as BookItem } from './book-item/book-item.component'
 
 export const TEST_BOOKS:BookItem[] = [
-    {name: "A", desc: "A Book", author: "Alle"},
-    {name: "B", desc: "B Book", author: "Blle"}
+    {name: "A", desc: "A Book", author: "Alle", id: "0"},
+    {name: "B", desc: "B Book", author: "Blle", id: "1"}
   ];
 
 @Injectable()
