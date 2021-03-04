@@ -8,22 +8,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-<<<<<<< Updated upstream
 import { BookDeleteConfirmationComponent } from './book-delete-confirmation/book-delete-confirmation.component';
-=======
-import { SettingsComponent } from './settings/settings.component';
->>>>>>> Stashed changes
 
 
 @NgModule({
   declarations: [
     AppComponent,   
-<<<<<<< Updated upstream
     routingComponents, 
     BookDeleteConfirmationComponent, 
-=======
-    routingComponents, SettingsComponent, 
->>>>>>> Stashed changes
 
   ],
   imports: [
