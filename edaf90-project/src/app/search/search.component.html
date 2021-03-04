@@ -1,7 +1,7 @@
 <h1>Sök efter en bok</h1>
 
 <div class="search-box">
-  <input #searchInput class="search-bar" type="search" placeholder="Sök...">
+  <input #searchInput class="search-bar" type="search" placeholder="Sök..." (keydown.enter)="searchBooks(searchInput.value)">
   <button (click)="searchBooks(searchInput.value)" type="button" class="btn btn-info">SÖK</button>
   <button type="button" class="btn btn-danger" style="float: right;">Rensa markerade</button>
   <button (click)="setBooksToRead()" type="button" class="btn btn-success" style="float: right;">Lägg till markerade i listan "Vill läsa"</button>
