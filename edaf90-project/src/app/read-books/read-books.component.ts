@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   selector: 'app-read-books',
   templateUrl: './read-books.component.html',
   styleUrls: ['./read-books.component.css']
+  
 })
 export class ReadBooksComponent implements OnInit {
   bookOptions:BookOption[] = [];
@@ -18,6 +19,7 @@ export class ReadBooksComponent implements OnInit {
   currentVal = "";
   toReadCollection:AngularFirestoreCollection<BookItem>| undefined;
   toReadItems: Observable<BookItem[]>| undefined;
+  selected = "";
 
   constructor(private data:BookDataService, private firestore:AngularFirestore) {
     this.toReadCollection = this.firestore.collection('haveRead');
@@ -41,7 +43,7 @@ export class ReadBooksComponent implements OnInit {
 
       showreviews(book: string) {
         if(this.reviews.size != 0) {
-       this.currentVal = this.reviews.get(book) || "";
+       this.currentVal = book + ' är: ' + (this.reviews.get(book) || "") 
           console.log('showreviews har körts')
         }
     }

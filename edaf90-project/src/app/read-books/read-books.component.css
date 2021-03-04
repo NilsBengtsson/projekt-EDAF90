@@ -4,3 +4,37 @@
     border: 2px solid #17A2BB;
     margin: auto;
 }
+
+
+.dropdown{
+    height: 51.31px;
+    background: #5B8DA7;
+    vertical-align: middle;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-top: 0.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    position: relative;
+}
+
+.dropdown-select-group:focus{
+    color: white !important;
+}
+
+.dropdown-select{
+    color: white;
+    background: #5B8DA7;
+    positio: relative
+}
+
+.dropdown-select:hover{
+    background: #5B8DA7;
+    box-shadow: inset 0 0 10px;
+}
+
+.result-box-wrapper{
+    margin: 5% 10%;
+    padding-bottom: 5%;
+}
+
