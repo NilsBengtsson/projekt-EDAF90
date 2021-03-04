@@ -9,12 +9,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { BookDeleteConfirmationComponent } from './book-delete-confirmation/book-delete-confirmation.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,   
     routingComponents, 
+    BookDeleteConfirmationComponent, 
 
   ],
   imports: [

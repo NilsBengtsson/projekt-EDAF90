@@ -11,6 +11,7 @@
             <b>{{option.value.name}}</b> &nbsp;
             <i>{{option.value.author}}</i> &nbsp;
             <button class="del" (click)="deleteBook(option.value)">X</button>
+            <app-book-delete-confirmation *ngIf="option.deleting" (confirmed)="deleteOnConfirm($event, option.value)"></app-book-delete-confirmation>
         </p>
     </div>
 

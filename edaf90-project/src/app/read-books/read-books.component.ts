@@ -14,7 +14,8 @@ import { Observable } from 'rxjs';
 export class ReadBooksComponent implements OnInit {
   bookOptions:BookOption[] = [];
   subscription:Subscription;
-  reviews: Array<any> = [] 
+  reviews: Map<string, string>;
+  currentVal = "";
   toReadCollection:AngularFirestoreCollection<BookItem>| undefined;
   toReadItems: Observable<BookItem[]>| undefined;
 
@@ -24,30 +25,29 @@ export class ReadBooksComponent implements OnInit {
       this.subscription = this.toReadItems.subscribe(books => {
         console.log("Sub triggered");
         this.bookOptions = books.map(item => {
-          var option:BookOption = {name: item.name, value: item, checked: false}
+          var option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
           return option;
         });
       });
-      this.reviews = [];
+      this.reviews = new Map();
       } 
       ngOnInit(): void {
       }
        
-      review(reviewInput: string) {
-        let currentReviews = this.reviews;
-        let newReview = [
-          reviewInput,
-        ]
-        currentReviews.push(newReview);
-        this.reviews = currentReviews;
+      review(reviewInput: string, book: string ) {
+        this.reviews.set(book, reviewInput);
         console.log('review updated')
-        
       }
 
-      showreviews() {
-        return this.reviews;
+      showreviews(book: string) {
+        if(this.reviews.size != 0) {
+       this.currentVal = this.reviews.get(book) || "";
+          console.log('showreviews har körts')
         }
-      }
+    }
+}
+        
+      
 
       
 
