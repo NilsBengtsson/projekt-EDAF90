@@ -14,8 +14,8 @@ import { Observable } from 'rxjs';
 export class ReadBooksComponent implements OnInit {
   bookOptions:BookOption[] = [];
   subscription:Subscription;
-  reviews: Array<any> = [];
-  currentVal = ""; 
+  reviews: Map<string, string>;
+  currentVal = "";
   toReadCollection:AngularFirestoreCollection<BookItem>| undefined;
   toReadItems: Observable<BookItem[]>| undefined;
 
@@ -29,32 +29,24 @@ export class ReadBooksComponent implements OnInit {
           return option;
         });
       });
-      this.reviews = [];
+      this.reviews = new Map();
       } 
       ngOnInit(): void {
       }
        
-      review(reviewInput: string) {
-        let currentReviews = this.reviews;
-        let newReview = [
-          reviewInput,
-        ]
-        currentReviews.push(newReview);
-        this.reviews = currentReviews;
+      review(reviewInput: string, book: string ) {
+        this.reviews.set(book, reviewInput);
         console.log('review updated')
-    
-        
       }
 
-      showreviews() {
-        for (var i = 0; i<this.reviews.length; i++) {
-          let review = ('Recension ' + (i+1) + ': ' + this.reviews[i] + ' ');
-          this.currentVal += review;
-          
+      showreviews(book: string) {
+        if(this.reviews.size != 0) {
+       this.currentVal = this.reviews.get(book) || "";
           console.log('showreviews har körts')
+        }
     }
 }
-        }
+        
       
 
       

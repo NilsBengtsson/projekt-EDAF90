@@ -9,21 +9,28 @@
 
         <div class="review-box">
             <input #reviewInput class="review-box" type="review" placeholder="Skriv en recension">
-            <button (click)="review(reviewInput.value)" type="button" class="btn btn-info">Skicka recension</button>
+            <button (click)="review(reviewInput.value, 'hej')" type="button" class="btn btn-info">Skicka recension</button>
         </div>
 
        <h2>Här är dina recensioner: </h2>
        <p id="showr">... </p>
 
     
-       <button (click)="showreviews()">Visa dina recesioner</button><br>
+       <button (click)="showreviews('hej')">Visa dina recesioner</button><br>
     </div>    
 
     {{currentVal}}
+    
 
-<button onclick="myFunction()">Click me</button>
 
 <p id="demo"></p>
+
+<script> 
+function test() {
+document.getElementById("showr").innerHTML = "";
+
+}
+</script>
 
 
 
