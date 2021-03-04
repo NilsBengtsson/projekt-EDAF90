@@ -71,3 +71,33 @@
     padding-bottom: 5%;
 }
 
+.result-box{
+    height: 70px;
+}
+
+.btn-mark{
+    position: relative;
+    margin-left: 90%;
+    font-size: small;
+    height: 22px;
+    background: #5B8DA7;
+    color: white;
+    vertical-align: middle !important;
+    padding: 0px 5px !important;
+    outline: none;
+}
+
+.btn-marked{
+    position: relative;
+    user-select: none;
+    margin-left: 90%;
+    font-size: small;
+    height: 22px;
+    background: #a75b5b;
+    pointer-events: none;
+    color: white;
+    vertical-align: middle !important;
+    padding: 0px 5px !important;
+    outline:none;
+}
+

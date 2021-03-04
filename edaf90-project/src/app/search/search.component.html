@@ -3,7 +3,7 @@
 <div class="search-box">
   <h1>Sök efter en bok</h1>
   <mat-form-field class="dropdown" >
-    <mat-label>Sökningsfilter</mat-label>
+    <mat-label>Sökfilter</mat-label>
     <mat-select [(value)]="selected" class="dropdown-select-group">
       <mat-option class="dropdown-select">Inget</mat-option>
       <mat-option class="dropdown-select" value="title">Titel</mat-option>
@@ -32,6 +32,7 @@
           (change) = "option.checked = !option.checked"/> &nbsp;
         <b>{{option.value.name}}</b> &nbsp;
         <i>{{option.value.author}}</i> &nbsp;
+        <button (click)="setReadBooks(option.value, i)" class="btn" [ngClass]="{'btn-marked' : toggles[i], 'btn-mark': !toggles[i]}">Läst</button>
       </p>
   </div>
 </div>
