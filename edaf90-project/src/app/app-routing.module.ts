@@ -22,4 +22,4 @@ const routes: Routes = [
 
 export class AppRoutingModule {
 }
-export const routingComponents = [SearchComponent, WantToReadComponent, ReadBooksComponent, BookItemComponent];
+export const routingComponents = [SearchComponent, WantToReadComponent, ReadBooksComponent];
