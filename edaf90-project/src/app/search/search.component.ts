@@ -95,6 +95,12 @@ export class SearchComponent implements OnInit {
     this.data.setBooksToRead(booksToAdd);
   }
 
+  clearChecked(){
+    for(let book of this.bookOptions){
+      book.checked = false;
+    }
+  }
+
   ngOnInit(): void {
 
   }

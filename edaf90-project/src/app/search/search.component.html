@@ -12,7 +12,7 @@
   </mat-form-field>
   <input #searchInput class="search-bar" type="search" placeholder="Sök..." (keydown.enter)="searchBooks(searchInput.value, selected)">
   <button (click)="searchBooks(searchInput.value, selected)" type="button" class="btn btn-right">SÖK</button>
-  <button type="button" class="btn btn-right" style="float: right;">Rensa markerade</button>
+  <button (click) = "clearChecked()" type="button" class="btn btn-right" style="float: right;">Rensa markerade</button>
   <button (click)="setBooksToRead()" type="button" class="btn btn-left" style="float: right;">Markera som "Vill läsa"</button>
   <!--<button class="del">RENSA</button>-->
   <div *ngIf="fetchingData">  
