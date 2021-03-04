@@ -24,7 +24,7 @@ export class ReadBooksComponent implements OnInit {
       this.subscription = this.toReadItems.subscribe(books => {
         console.log("Sub triggered");
         this.bookOptions = books.map(item => {
-          var option:BookOption = {name: item.name, value: item, checked: false}
+          var option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
           return option;
         });
       });

@@ -8,12 +8,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { BookDeleteConfirmationComponent } from './book-delete-confirmation/book-delete-confirmation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,   
     routingComponents, 
+    BookDeleteConfirmationComponent, 
 
   ],
   imports: [

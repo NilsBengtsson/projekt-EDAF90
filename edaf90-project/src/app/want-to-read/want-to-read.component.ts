@@ -18,15 +18,16 @@ export class WantToReadComponent implements OnInit {
   toReadCollection:AngularFirestoreCollection<BookItem>| undefined;
   toReadItems: Observable<BookItem[]>| undefined;
 
+  deleting = false;
+
   subscription:Subscription;
 
   constructor(private data:BookDataService, private firestore:AngularFirestore) {
     this.toReadCollection = this.firestore.collection('toRead');
     this.toReadItems = this.toReadCollection.valueChanges();
     this.subscription = this.toReadItems.subscribe(books => {
-      console.log("Sub triggered");
       this.bookOptions = books.map(item => {
-        var option:BookOption = {name: item.name, value: item, checked: false}
+        var option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
         return option;
       });
     });
@@ -37,17 +38,21 @@ export class WantToReadComponent implements OnInit {
 
   deleteBook(value:BookItem, ask:boolean=true): void {
     if (ask){
-      if(confirm("Are you sure you want to delete " + value.name))
-        this.bookOptions = this.bookOptions.filter(op => value.name != op.value.name);
-        this.firestore.collection("toRead").doc(value.id).delete();
-        //this.toReadCollection?.doc('')
+      this.bookOptions.filter(op => op.value == value).forEach(op => op.deleting = true);
     } else {
-      this.bookOptions = this.bookOptions.filter(op => value.name != op.value.name);
+      this.data.setBooksToRead(this.bookOptions.filter(op => value.name != op.value.name).map(op => op.value));
       this.firestore.collection("toRead").doc(value.id).delete();
     }
   }
 
-
+  deleteOnConfirm(confirmed:boolean, value:BookItem): void {
+    if(confirmed) {
+      this.data.setBooksToRead(this.bookOptions.filter(op => value.name != op.value.name).map(op => op.value));
+      this.firestore.collection("toRead").doc(value.id).delete();
+    } else {
+      this.bookOptions.filter(op => op.value == value).forEach(op => op.deleting = false);
+    }
+  }
 
   setReadBooks() {
     //get checked books

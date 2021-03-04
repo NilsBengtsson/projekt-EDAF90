@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
       }).then( () => {
         //sets the bookOptions in case of successfull fetch
         this.bookOptions = this.books.map(item => {
-          var option:BookOption = {name: item.name, value: item, checked: false}
+          var option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
           return option;
         });
         this.fetchingData = false;
