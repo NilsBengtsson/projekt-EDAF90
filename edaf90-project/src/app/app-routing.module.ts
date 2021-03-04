@@ -6,12 +6,13 @@ import { WantToReadComponent } from './want-to-read/want-to-read.component';
 import { ReadBooksComponent } from './read-books/read-books.component';
 import { AppComponent } from './app.component';
 import { BookItemComponent } from './book-item/book-item.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {path: 'search',component: SearchComponent},
   {path: 'want-to-read', component: WantToReadComponent},
   {path: 'read-books', component: ReadBooksComponent},
-  {path: 'book-item', component: BookItemComponent}
+  {path: 'settings', component: SettingsComponent}
 ];   
  
 

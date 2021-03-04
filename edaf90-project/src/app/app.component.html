@@ -35,18 +35,6 @@
     flex: 1;
   }
 
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    background-color: #558aa8;
-    color: white;
-    font-weight: 700;
-  }
 
   .toolbar img {
     margin: 0 16px;
@@ -157,16 +145,6 @@
     z-index: -10;
   }
 
-  a,
-  a:visited,
-  a:hover {
-    color: #0b0b0c;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #fafafa;
-  }
 
   .terminal {
     position: relative;
@@ -322,9 +300,16 @@
   <div style="padding-top: 100px;" class="container">
           <a class="nav-link" routerLinkActive="active" routerLink="/read-books">Lästa Böcker</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/want-to-read">Vill läsa</a>
-          <a class="nav-link" routerLinkActive="active" routerLink="/search">Sök efter böcker</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/settings">Ändra design</a>
+
+          <button class = "toggle" (click)=switchTheme()>
+            {{ theme === 'light-theme' ? 'Switch to dark theme' : 'Switch to light theme'}}
+          </button>
   </div>
+
+
 </nav>
+
 
 
 <router-outlet></router-outlet>
