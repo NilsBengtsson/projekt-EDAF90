@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   bookOptions:BookOption[] = [];
   fetchingData = false;
   selected = 'option2';
+  toggles:Boolean[] = [];
 
   constructor(private data:BookDataService, private firestore:AngularFirestore) {}
 
@@ -52,6 +53,9 @@ export class SearchComponent implements OnInit {
         default:
           this.fetchBooks("http://openlibrary.org/search.json?q="+searchInput+"&mode=everything");
       }
+    }
+    for(let l = 0; l < this.bookOptions.length; l++){
+      this.toggles[l] = true;
     }
   }
 
@@ -100,6 +104,27 @@ export class SearchComponent implements OnInit {
       book.checked = false;
     }
   }
+
+  deleteBook(value:BookItem, ask:boolean=true): void {
+    if (ask){
+      this.bookOptions.filter(op => op.value == value).forEach(op => op.deleting = true);
+    } else {
+      this.data.setBooksToRead(this.bookOptions.filter(op => value.name != op.value.name).map(op => op.value));
+      this.firestore.collection("toRead").doc(value.id).delete();
+    }
+  }
+
+  setReadBooks(pressedBook: BookItem, index: number) {
+    this.toggles[index] = !this.toggles[index];
+    
+    var booksToAdd = [pressedBook];
+    const id = this.firestore.createId();
+    this.firestore.collection('haveRead').doc(id).set(pressedBook);
+    this.firestore.collection('haveRead').doc(id).update({'id':id});
+    this.data.setReadBooks(booksToAdd);
+    booksToAdd.forEach(book => this.deleteBook(book, false));
+  }
+
 
   ngOnInit(): void {
 
