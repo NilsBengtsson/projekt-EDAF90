@@ -7,24 +7,64 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
   books: BookItem[] = [];
   bookOptions:BookOption[] = [];
   fetchingData = false;
+  selected = 'option2';
 
   constructor(private data:BookDataService, private firestore:AngularFirestore) {}
 
-  searchBooks(searchInput: string){
+  searchBooks(searchInput: string, searchFilter: string){
     this.books = [];
     console.log(searchInput);
     if(searchInput!=""){
-      this.fetchingData = true;
-      fetch("http://openlibrary.org/search.json?q="+searchInput+"&mode=everything")
+      switch(searchFilter){
+        case "title":
+          this.fetchBooks("https://openlibrary.org/search.json?q=title%3A+"+searchInput+"&mode=everything");
+          break;
+        case "author":
+          fetch("https://openlibrary.org/search/authors.json?q="+searchInput+"&mode=everything")
+          .then(result => result.json())
+          .then(response =>{
+            for(let i=0; i<response.numFound; i++){
+              if(response.docs[i] !== undefined) { //discards books with undefined properties
+                for(let j=0; j<response.docs[i].top_subjects.length; j++){
+                  this.books.push({name: response.docs[i].top_subjects[j], author: response.docs[i].name, desc: "", id: ""})
+                  "<h2>"+response.docs[i].top_subjects[j]+"</h2>"
+                  +response.docs[i].name;
+                }
+              }
+            }
+          }).then( () => {
+            //sets the bookOptions in case of successfull fetch
+            this.bookOptions = this.books.map(item => {
+              let option:BookOption = {name: item.name, value: item, checked: false}
+              return option;
+            });
+            this.fetchingData = false;
+            console.log("fetched!");
+          });
+          //this.fetchBooks("https://openlibrary.org/search/authors.json?q="+searchInput+"&mode=everything");
+          break;
+        default:
+          this.fetchBooks("http://openlibrary.org/search.json?q="+searchInput+"&mode=everything");
+      }
+    }
+  }
+
+  fetchBooks(fetchString: string){
+    this.fetchingData = true;
+      fetch(fetchString)
       .then(result => result.json())
       .then(response =>{
-          for(var i=0; i<100; i++){
+          let nrOfItems = response.numFound;
+          if(nrOfItems > 100){
+            nrOfItems = 100;
+          }
+          for(let i=0; i<nrOfItems; i++){
             if(response.docs[i] !== undefined && response.docs[i].author_name !== undefined) { //discards books with undefined properties
               this.books.push({name: response.docs[i].title, author: response.docs[i].author_name[0], desc: "", id: ""})
               console.log(response.docs[i].title);
@@ -35,13 +75,12 @@ export class SearchComponent implements OnInit {
       }).then( () => {
         //sets the bookOptions in case of successfull fetch
         this.bookOptions = this.books.map(item => {
-          var option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
+          let option:BookOption = {name: item.name, value: item, checked: false}
           return option;
         });
         this.fetchingData = false;
         console.log("fetched!");
       });
-    }
   }
 
   //used by "lägg till markerade" button
