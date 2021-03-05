@@ -4,6 +4,8 @@
         <p>
             <b>{{option.value.name}}</b> &nbsp;
             <i>{{option.value.author}}</i> &nbsp;
+            <button (click)="deleteBook(option.value)">Delete</button>
+            <app-book-delete-confirmation *ngIf="option.deleting" (confirmed)="deleteOnConfirm($event, option.value)"></app-book-delete-confirmation>
         </p>
     </div>
     

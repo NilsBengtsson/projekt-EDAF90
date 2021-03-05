@@ -31,22 +31,39 @@ export class ReadBooksComponent implements OnInit {
           return option;
         });
       });
-      this.reviews = new Map();
-      } 
-      ngOnInit(): void {
-      }
+    this.reviews = new Map();
+  } 
+  ngOnInit(): void {}
        
-      review(reviewInput: string, book: string ) {
-        this.reviews.set(book, reviewInput);
-        console.log('review updated')
-      }
+  review(reviewInput: string, book: string ) {
+    this.reviews.set(book, reviewInput);
+    console.log('review updated')
+  }
 
-      showreviews(book: string) {
-        if(this.reviews.size != 0) {
-       this.currentVal = book + ' är: ' + (this.reviews.get(book) || "") 
-          console.log('showreviews har körts')
-        }
+  showreviews(book: string) {
+    if(this.reviews.size != 0) {
+      this.currentVal = book + ' är: ' + (this.reviews.get(book) || "") 
+      console.log('showreviews har körts')
     }
+  }
+
+  deleteBook(value:BookItem, ask:boolean=true): void {
+    if (ask){
+      this.bookOptions.filter(op => op.value == value).forEach(op => op.deleting = true);
+    } else {
+      this.data.setBooksToRead(this.bookOptions.filter(op => value.name != op.value.name).map(op => op.value));
+      this.firestore.collection("haveRead").doc(value.id).delete();
+    }
+  }
+
+  deleteOnConfirm(confirmed:boolean, value:BookItem): void {
+    if(confirmed) {
+      this.data.setBooksToRead(this.bookOptions.filter(op => value.name != op.value.name).map(op => op.value));
+      this.firestore.collection("haveRead").doc(value.id).delete();
+    } else {
+      this.bookOptions.filter(op => op.value == value).forEach(op => op.deleting = false);
+    }
+  }
 }
         
       
