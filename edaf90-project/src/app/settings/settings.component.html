@@ -1,1 +1,22 @@
-<p>settings works!</p>
+
+<!--<button class = "toggle" (click)=switchTheme()>
+    {{ theme === 'light-theme' ? 'Switch to dark theme' : 'Switch to light theme'}}
+  </button>-->
+
+<div class="settings-wrapper">
+    <div class="settings-title">
+        <h1>Inställningar</h1>
+    </div>
+    <div class="settings-slider">
+        <mat-slide-toggle color="primary">
+            Toggle dark mode
+        </mat-slide-toggle>
+    </div>
+    <div class = "settings-input">
+            <mat-form-field class="example-full-width">
+                <mat-label>Namn:</mat-label>
+                <input matInput #nameInput (keydown.enter)="changeName(nameInput.value)" placeholder="Ditt namn..." value = {{this.myName}}>
+              </mat-form-field>
+
+    </div>
+</div>

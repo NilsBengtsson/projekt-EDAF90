@@ -279,7 +279,7 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <p style="padding-left: 10px;">Välkommen till din läsdagbok
+  <p style="padding-left: 10px;">Hej, {{myName}}! Välkommen till din läsdagbok
     På den här sidan kan du skriva recensioner, 
     hålla koll på vilka böcker du har läst och vill läsa 
     samt söka upp nya böcker. Börja genom att trycka på någon av knapparna nedan!
@@ -301,7 +301,7 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/read-books">Lästa Böcker</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/want-to-read">Vill läsa</a>
           <a class="nav-link" routerLinkActive="active" routerLink="/search">Sök efter böcker</a>
-          <a class="nav-link" routerLinkActive="active" routerLink="/settings">Ändra design</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/settings">Inställningar</a>
 
           <button class = "toggle" (click)=switchTheme()>
             {{ theme === 'light-theme' ? 'Switch to dark theme' : 'Switch to light theme'}}
