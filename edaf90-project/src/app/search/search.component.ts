@@ -1,4 +1,3 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {BookItemComponent as BookItem, BookOption} from '../book-item/book-item.component'
 import { BookDataService } from '../bookDataService';

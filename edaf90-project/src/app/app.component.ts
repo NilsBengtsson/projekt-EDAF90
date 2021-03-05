@@ -1,4 +1,4 @@
-import { Component, EmbeddedViewRef, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, EmbeddedViewRef, ViewChild, Inject, OnInit, Renderer2, AfterViewInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 
@@ -11,10 +11,13 @@ export class AppComponent implements OnInit{
   title = 'Min dagbok';
   theme: Theme = 'light-theme';
 
+  myName: String = "Anonym";
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.initializeTheme();
@@ -30,6 +33,7 @@ export class AppComponent implements OnInit{
         : (this.theme = 'light-theme')
     );
   }
+
 }
 
 
