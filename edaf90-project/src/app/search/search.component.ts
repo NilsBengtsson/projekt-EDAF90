@@ -88,6 +88,9 @@ export class SearchComponent implements OnInit {
 
   //used by "lägg till markerade" button
   setBooksToRead() {
+    
+    alert("Book marked as want to read")
+    
     var booksToAdd = this.bookOptions.filter(op => op.checked).map(op => op.value);
     var test = 0;
     booksToAdd.forEach(b => {
