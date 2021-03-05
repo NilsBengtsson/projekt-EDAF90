@@ -20,9 +20,8 @@ document.getElementById("showr").innerHTML = "";
 
 <div>
 <h2>Här är dina recensioner: </h2>
-<p id="showr">... </p>
-<button (click)="showreviews(selected)">Visa dina recesioner</button><br>
 {{currentVal}}
+
 </div>
 
 <body>
@@ -36,11 +35,10 @@ document.getElementById("showr").innerHTML = "";
       </head>
       <body>
 
-    <div class="container">
-      <h2>Skriv en recension</h2>
+    
       <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Välj bok</button>    
-
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Skriv en recension</button>      
+      <button class="btn btn-info btn-lg" (click)="showreviews(selected)">Visa dina recesioner</button><br>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -57,9 +55,11 @@ document.getElementById("showr").innerHTML = "";
                 <mat-form-field class="dropdown">
                     <mat-label>Böcker som jag har läst</mat-label>
                           <mat-select [(value)]="selected" class="dropdown-select-group">
-                            <div *ngFor="let option of bookOptions">
-                            <mat-option class="dropdown-select" value= "{{option.value.name}}">{{option.value.name}}</mat-option>>
-                            </div>
+                            
+                            <mat-option class="dropdown-select" 
+                            *ngFor="let option of bookOptions"
+                            value= "{{option.value.name}}">{{option.value.name}}</mat-option>>
+                          
                             </mat-select>
                         </mat-form-field>
 

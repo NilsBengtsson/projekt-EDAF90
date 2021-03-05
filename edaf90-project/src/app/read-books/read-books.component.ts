@@ -42,7 +42,7 @@ export class ReadBooksComponent implements OnInit {
 
   showreviews(book: string) {
     if(this.reviews.size != 0) {
-      this.currentVal = book + ' är: ' + (this.reviews.get(book) || "") 
+      this.currentVal = book + ': ' + (this.reviews.get(book) || "") 
       console.log('showreviews har körts')
     }
   }
