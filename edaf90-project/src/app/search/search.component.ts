@@ -41,13 +41,12 @@ export class SearchComponent implements OnInit {
           }).then( () => {
             //sets the bookOptions in case of successfull fetch
             this.bookOptions = this.books.map(item => {
-              let option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
+              let option:BookOption = {name: item.name, value: item, checked: false, deleting: false, revieweing: false}
               return option;
             });
             this.fetchingData = false;
             console.log("fetched!");
           });
-          //this.fetchBooks("https://openlibrary.org/search/authors.json?q="+searchInput+"&mode=everything");
           break;
         default:
           this.fetchBooks("http://openlibrary.org/search.json?q="+searchInput+"&mode=everything");
@@ -78,7 +77,7 @@ export class SearchComponent implements OnInit {
       }).then( () => {
         //sets the bookOptions in case of successfull fetch
         this.bookOptions = this.books.map(item => {
-          let option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
+          let option:BookOption = {name: item.name, value: item, checked: false, deleting: false, revieweing: false}
           return option;
         });
         this.fetchingData = false;

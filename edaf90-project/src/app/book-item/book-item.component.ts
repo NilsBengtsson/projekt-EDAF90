@@ -4,7 +4,8 @@ export interface BookOption {
   name:string,
   value:BookItemComponent,
   checked:boolean,
-  deleting:boolean
+  deleting:boolean,
+  revieweing:boolean
 }
 
 export class BookItemComponent {
