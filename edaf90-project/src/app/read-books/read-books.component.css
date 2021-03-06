@@ -28,18 +28,16 @@
     padding-top: 0.5%;
     padding-left: 1%;
     padding-right: 1%;
+    z-index: 999999;
 }
 
 .dropdown-select {
-    overflow-y: visible;
-    z-index: 1000;
+    overflow-y: inherit !important;
 }
 
 .dropdown-select-group:focus{
     color: white !important;
-    overflow-y: visible;
-    z-index: 1000;
-
+    overflow-y: inherit !important; 
 }
 
 
@@ -55,9 +53,7 @@
 
 .modal { 
     overflow: visible; 
-    position: relative;
-    
-
+    position: absolute;
 }
 
 .modal-body { 
@@ -65,11 +61,8 @@
     z-index: 10;
 }
 
-.modal-title {
-    position: relative;
-}
-
 .container {
     position: absolute; 
-    top: 150px;
+    top: 200px;
 }
+

@@ -38,7 +38,9 @@ document.getElementById("showr").innerHTML = "";
     
       <!-- Trigger the modal with a button -->
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Skriv en recension</button>      
-      <button class="btn btn-info btn-lg" (click)="showreviews(selected)">Visa dina recesioner</button><br>
+      <button class="btn btn-info btn-lg" (click)="showreviews(selected)">Visa dina recesioner</button><br>            
+
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -50,46 +52,18 @@ document.getElementById("showr").innerHTML = "";
         </div>
        
         <div class="modal-body">
-            <body>
                 <p>Klicka på knappen för att öppna rull-listan med böcker.</p>
-                <mat-form-field class="dropdown">
-                    <mat-label>Böcker som jag har läst</mat-label>
-                          <mat-select [(value)]="selected" class="dropdown-select-group">
-                            
-                            <mat-option class="dropdown-select" 
-                            *ngFor="let option of bookOptions"
-                            value= "{{option.value.name}}">{{option.value.name}}</mat-option>>
-                          
-                            </mat-select>
-                        </mat-form-field>
+                <label for="choosebook">Bok som jag har läst: </label>
+                <select class="dropdown" id="choosebook"> 
+        <option class="dropdown-content" *ngFor="let option of bookOptions" value="{{option.value.name}}">
+          {{option.value.name}}</option>
+        </select>
+    <input #reviewInput class="review-box" type="review" placeholder="Skriv en recension">
+     <button (click)="review(reviewInput.value, selected)" type="button" class="btn btn-info">Skicka recension</button>
+    
 
-                        <p>Du vill skriva en recension om </p>
-
-                            <input #reviewInput class="review-box" type="review" placeholder="Skriv en recension">
-                            <button (click)="review(reviewInput.value, selected)" type="button" class="btn btn-info">Skicka recension</button>
-
+     
                 
-                <script>
-                    /* When the user clicks on the button, 
-                    toggle between hiding and showing the dropdown content */
-                    function myFunction() {
-                      document.getElementById("myDropdown").classList.toggle("show");
-                    }
-                    
-                    // Close the dropdown if the user clicks outside of it
-                    window.onclick = function(event) {
-                      if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                          var openDropdown = dropdowns[i];
-                          if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                          }
-                        }
-                      }
-                    }
-                    </script>
 
 
     
