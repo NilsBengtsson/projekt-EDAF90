@@ -1,3 +1,96 @@
+.container {
+    /*position: absolute; 
+    top: 150px;*/
+    color:#5B8DA7;
+}
+
+h1{
+    text-align: center;
+    padding: 2% 0%;
+}
+
+.btn{
+    margin-top: 0px !important;
+    background: #5B8DA7;
+    color: white;
+    width: 33%;
+}
+
+.button-wrapper{
+    margin: 0 auto;
+    width: 50%;
+    align-content: center;
+    position: relative;
+}
+
+.btn-allBooks{
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important; 
+    border-right: 1.5px solid white;
+}
+
+.btn-reviewedBooks{
+    border-right: 2px solid white;
+    border-radius: 5px;
+}
+
+.btn-noReviewedBooks{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important; 
+}
+
+.result-box-wrapper{
+    margin: 5% 10%;
+    padding-bottom: 5%;
+}
+
+.btn-active{
+    box-shadow: rgba(17, 54, 85, 0.5) 3px 3px 2px 0px inset, rgb(17, 54, 85, 0.5) -3px -3px 2px 0px inset;    
+}
+
+.btn-delete{
+    background: none;
+    border: none;
+    padding: 0px;
+    vertical-align: middle;
+    z-index: 999;
+
+}
+
+.book-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    grid-template-areas:
+    "a a a a a a a b";
+    align-items: start;
+    padding: 10px 10px;
+}
+
+.img-revieweing{
+    height: 10px;
+    padding-right: 10px;
+}
+
+.text-wrapper{
+    grid-area: a;
+
+}
+
+.btn-wrapper{
+    grid-area: b;
+}
+
+.revewing-box{
+    border: 3px solid #5B8DA7;
+    background: white !important;
+    z-index: 500;
+    height: 200px;
+    width: 100%;
+}
+
+
+/*
 .del {
     background: #ff0000;
     color: #fff;
@@ -68,8 +161,8 @@
     z-index: 10;
 }
 
-.container {
-    position: absolute; 
-    top: 150px;
-}
+
+.modal-title {
+    position: relative;
+}*/
 

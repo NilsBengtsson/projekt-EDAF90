@@ -27,7 +27,7 @@ export class WantToReadComponent implements OnInit {
     this.toReadItems = this.toReadCollection.valueChanges();
     this.subscription = this.toReadItems.subscribe(books => {
       this.bookOptions = books.map(item => {
-        var option:BookOption = {name: item.name, value: item, checked: false, deleting: false}
+        var option:BookOption = {name: item.name, value: item, checked: false, deleting: false, revieweing: false }
         return option;
       });
     });
