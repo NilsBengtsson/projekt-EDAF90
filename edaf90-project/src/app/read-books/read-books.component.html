@@ -1,11 +1,11 @@
-<div>
+<div class="container">
     <h1>Böcker som jag har läst</h1>
     <div *ngFor="let option of bookOptions">
         <p>
             <b>{{option.value.name}}</b> &nbsp;
             <i>{{option.value.author}}</i> &nbsp;
-            <button (click)="deleteBook(option.value)">Delete</button>
-            <button (click)="showreviews(option.value.name)">Visa recension</button>
+            <button class= "btn" (click)="deleteBook(option.value)">Ta bort</button>
+            <button class="btn" (click)="showreviews(option.value.name)">Visa recension</button>
             <app-book-delete-confirmation *ngIf="option.deleting" (confirmed)="deleteOnConfirm($event, option.value)"></app-book-delete-confirmation>
         </p>
     </div>

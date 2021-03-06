@@ -11,6 +11,13 @@
     line-height: initial;
   }
 
+  .btn{
+    margin-top: 0px !important;
+    height: 51.31px;
+    background: #5B8DA7;
+    color: white;
+}
+
 
 .review-box {
     height: 100px;
@@ -63,6 +70,6 @@
 
 .container {
     position: absolute; 
-    top: 200px;
+    top: 150px;
 }
 
