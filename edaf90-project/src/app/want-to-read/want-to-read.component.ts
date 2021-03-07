@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-want-to-read',
   templateUrl: './want-to-read.component.html',
-  styleUrls: ['./want-to-read.component.css']
+  styleUrls: ['./want-to-read.component.css'],
 })
 
 

@@ -1,19 +1,23 @@
-<div>
+<div class="container">
     <h1>Böcker att läsa</h1>
-    <div *ngFor="let option of bookOptions">
-        <p>
-            <input type="checkbox"
-            name = "option.name"
-            value = "{{option.value}}" 
-            [checked] = "option.checked"
-            (change) = "option.checked = !option.checked"
-            /> &nbsp;
-            <b>{{option.value.name}}</b> &nbsp;
-            <i>{{option.value.author}}</i> &nbsp;
-            <button class="del" (click)="deleteBook(option.value)">X</button>
-            <app-book-delete-confirmation *ngIf="option.deleting" (confirmed)="deleteOnConfirm($event, option.value)"></app-book-delete-confirmation>
-        </p>
+    <div class="result-box" *ngFor="let option of bookOptions; let i = index" [ngStyle]="{'background' : i % 2 == 0 ? 'white' : 'lightgray'}">
+        <div class="book-wrapper">
+            <div class="text-wrapper">
+                <input type="checkbox"
+                name = "option.name"
+                value = "{{option.value}}" 
+                [checked] = "option.checked"
+                (change) = "option.checked = !option.checked"
+                /> &nbsp;
+                <b>{{option.value.name}}</b> &nbsp;
+                <i>{{option.value.author}}</i> &nbsp;
+            </div>
+            <div class="btn-wrapper">
+                <button class="btn-delete" *ngIf="!option.deleting" (click)="deleteBook(option.value)"><img src="../../assets/delete.png"></button>
+                <app-book-delete-confirmation *ngIf="option.deleting" (confirmed)="deleteOnConfirm($event, option.value)"></app-book-delete-confirmation>
+            </div>
+        </div>
     </div>
 
-    <button (click)="setReadBooks()">Send checked books</button>
+    <button class="btn btn-left" (click)="setReadBooks()">Flytta markerade böcker till läst</button>
 </div>
