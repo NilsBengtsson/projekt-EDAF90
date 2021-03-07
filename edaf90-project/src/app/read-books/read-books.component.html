@@ -3,7 +3,7 @@
   <div class="button-wrapper">
     <button (click)="showAllBooks()" type="button" class="btn btn-allBooks" [ngClass] = "{'btn-active' : activeButton[0]}">Alla lästa böcker</button>
     <button (click) = "showReviewedBooks()" type="button" class="btn btn-reviewedBooks" [ngClass] = "{'btn-active' : activeButton[1]}">Recenserade böcker</button>
-    <button (click)="showNoReviewedBooks()" type="button" class="btn btn-noReviewedBooks" [ngClass] = "{'btn-active' : activeButton[2]}">Orecenserade böcker</button>
+    <!--button (click)="showNoReviewedBooks()" type="button" class="btn btn-noReviewedBooks" [ngClass] = "{'btn-active' : activeButton[2]}">Orecenserade böcker</button-->
   </div>
 
   <div class="result-box-wrapper">
@@ -22,20 +22,28 @@
         </div>
       </div>
       <div class="revewing-box" *ngIf="option.revieweing">
+        <p> {{currentVal}} </p>  
         <!--Kolla om recension finns visa isåfall denna med en knapp för att redigera-->
         <!--Om ingen recension finns visa knapp för att recensera-->
         <!--vid knapptryck av något av ovanstående, visa form nedan?-->
         <hr>
         <h5>Du recenserar nu boken: </h5>
+       
         <hr>
         <mat-form-field>
-          <textarea></textarea>
-          <!--Visuell återkoppling till användaren vid knapptryck av något nedan?-->
-          <button type="submit">Bekräfta</button> <!--skickar in värdet i textfield till vald boks recension-->
-          <button type="button">Ångra</button> <!--Återgår till föregåene utseende-->
+          <input #reviewInput class="review-box" type="review" placeholder="Skriv en recension">
+          <button (click)="review(reviewInput.value, option)" type="button" class="btn btn-right">Skicka recension</button>
+          <button class="btn btn-left" (click)="showreviews(option)">Visa recension</button>
+          
         </mat-form-field>
+        
+      
+
       </div>
+
+     
     </div>
+    
   </div>
 </div>
 

@@ -19,7 +19,7 @@ export class ReadBooksComponent implements OnInit {
   notReviewedBookList:BookOption[] = [];
   activeButton:Boolean[] = [true, false, false];
   subscription:Subscription;
-  reviews: Map<string, string>;
+  reviews: Map<BookOption, string>;
   currentVal = "";
   toReadCollection:AngularFirestoreCollection<BookItem>| undefined;
   toReadItems: Observable<BookItem[]>| undefined;
@@ -41,6 +41,19 @@ export class ReadBooksComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  review(reviewInput: string, value:BookOption) {
+      this.reviews.set(value, reviewInput);
+      console.log('review updated')
+      this.reviewedBookList.push(value)
+  }
+
+  showreviews(value: BookOption) {
+    if(this.reviews.size != 0) {
+      this.currentVal = value.name + ': ' + (this.reviews.get(value) || "") 
+      console.log('showreviews har körts')
+    }
   }
 
   //Vad som händer när man klickar knappen "Alla lästa böcker"
