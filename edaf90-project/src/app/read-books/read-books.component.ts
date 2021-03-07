@@ -47,6 +47,12 @@ export class ReadBooksComponent implements OnInit {
       this.reviews.set(value, reviewInput);
       console.log('review updated')
       this.reviewedBookList.push(value)
+
+    if(this.reviews.has(value)) {
+      this.currentVal = 'Din recension av boken "' + value.name + '" är: ' + (this.reviews.get(value));
+    } else {
+      this.currentVal = 'Boken har inte recenserats'
+    }
   }
 
   showreviews(value: BookOption) {
