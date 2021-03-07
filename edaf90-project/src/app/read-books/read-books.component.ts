@@ -56,9 +56,10 @@ export class ReadBooksComponent implements OnInit {
   }
 
   showreviews(value: BookOption) {
-    if(this.reviews.size != 0) {
-      this.currentVal = value.name + ': ' + (this.reviews.get(value) || "") 
-      console.log('showreviews har körts')
+    if(this.reviews.has(value)) {
+      this.currentVal = 'Din recension av boken "' + value.name + '" är: ' + (this.reviews.get(value));
+    } else {
+      this.currentVal = 'Boken har inte recenserats'
     }
   }
 
