@@ -14,7 +14,10 @@ h1{
     color: var(--text-color);
     width: 33%;
   }
-
+  
+  mat-form-field.mat-form-field {
+    width: 100%;
+  }
 
 
 .btn-right{

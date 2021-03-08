@@ -59,9 +59,9 @@ export class WantToReadComponent implements OnInit {
     var booksToAdd = this.bookOptions.filter(op => op.checked).map(op => op.value);
     var test = 0
     booksToAdd.forEach(b => {
-      const id = this.firestore.createId();
+      const id = b.id;
       this.firestore.collection('haveRead').doc(id).set(b);
-      this.firestore.collection('haveRead').doc(id).update({'id':id});
+      this.firestore.collection('haveRead').doc(id).update({'id':id, 'review':""});
     });
     this.data.setReadBooks(booksToAdd);
     booksToAdd.forEach(book => this.deleteBook(book, false));

@@ -28,15 +28,21 @@ export class ReadBooksComponent implements OnInit {
   constructor(private data:BookDataService, private firestore:AngularFirestore) {
     this.toReadCollection = this.firestore.collection('haveRead');
     this.toReadItems = this.toReadCollection.valueChanges();
+    this.reviews = new Map();
     this.subscription = this.toReadItems.subscribe(books => {
       console.log("Sub triggered");
       this.bookOptions = books.map(item => {
         var option:BookOption = {name: item.name, value: item, checked: false, deleting: false, revieweing: false}
+        if(item.review != "") {
+          this.reviews.set(option, item.review);
+          this.reviewedBookList.push(option);
+        }
         return option;
       });
       this.activeBookList = this.bookOptions; //lade till denna
+
     });
-    this.reviews = new Map();
+
   } 
 
   ngOnInit(): void {
@@ -47,6 +53,7 @@ export class ReadBooksComponent implements OnInit {
       this.reviews.set(value, reviewInput);
       console.log('review updated')
       this.reviewedBookList.push(value)
+      this.firestore.collection('haveRead').doc(value.value.id).update({"review":reviewInput})
 
     if(this.reviews.has(value)) {
       this.currentVal = 'Din recension av boken "' + value.name + '" är: ' + (this.reviews.get(value));

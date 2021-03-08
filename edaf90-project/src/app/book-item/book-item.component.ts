@@ -13,4 +13,6 @@ export class BookItemComponent {
   desc:string = "";
   author:string = "";
   id:string = "";
+  review:string = "";
+
 }

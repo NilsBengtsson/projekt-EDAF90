@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
             for(let i=0; i<response.numFound; i++){
               if(response.docs[i] !== undefined) { //discards books with undefined properties
                 for(let j=0; j<response.docs[i].top_subjects.length; j++){
-                  this.books.push({name: response.docs[i].top_subjects[j], author: response.docs[i].name, desc: "", id: ""})
+                  this.books.push({name: response.docs[i].top_subjects[j], author: response.docs[i].name, desc: "", id: "", review: ""})
                   "<h2>"+response.docs[i].top_subjects[j]+"</h2>"
                   +response.docs[i].name;
                 }
@@ -68,7 +68,7 @@ export class SearchComponent implements OnInit {
           }
           for(let i=0; i<nrOfItems; i++){
             if(response.docs[i] !== undefined && response.docs[i].author_name !== undefined) { //discards books with undefined properties
-              this.books.push({name: response.docs[i].title, author: response.docs[i].author_name[0], desc: "", id: ""})
+              this.books.push({name: response.docs[i].title, author: response.docs[i].author_name[0], desc: "", id: "", review: ""})
               console.log(response.docs[i].title);
                   "<h2>"+response.docs[i].title+"</h2>"
                   +response.docs[i].author_name[0];
@@ -95,7 +95,7 @@ export class SearchComponent implements OnInit {
     booksToAdd.forEach(b => {
       const id = this.firestore.createId();
       this.firestore.collection('toRead').doc(id).set(b);
-      this.firestore.collection('toRead').doc(id).update({'id':id});
+      this.firestore.collection('toRead').doc(id).update({'id':id, 'review':''});
     });
     this.data.setBooksToRead(booksToAdd);
   }
