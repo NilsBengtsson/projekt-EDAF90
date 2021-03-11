@@ -36,6 +36,8 @@ export class ReadBooksComponent implements OnInit {
         if(item.review != "") {
           this.reviews.set(option, item.review);
           this.reviewedBookList.push(option);
+        } else {
+          this.notReviewedBookList.push(option);
         }
         return option;
       });
@@ -55,14 +57,6 @@ export class ReadBooksComponent implements OnInit {
       this.reviewedBookList.push(value)
       this.firestore.collection('haveRead').doc(value.value.id).update({"review":reviewInput})
 
-    if(this.reviews.has(value)) {
-      this.currentVal = 'Din recension av boken "' + value.name + '" är: ' + (this.reviews.get(value));
-    } else {
-      this.currentVal = 'Boken har inte recenserats'
-    }
-  }
-
-  showreviews(value: BookOption) {
     if(this.reviews.has(value)) {
       this.currentVal = 'Din recension av boken "' + value.name + '" är: ' + (this.reviews.get(value));
     } else {
